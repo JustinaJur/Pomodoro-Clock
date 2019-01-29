@@ -1,0 +1,65 @@
+
+.headline {
+color:white;
+font-weight: bold;
+text-align: center;
+text-transform: uppercase;
+height: 40px;
+margin: 10px;
+padding: 20px;
+place-items: center stretch;
+/* background-image: url("warhol.jpg"); */
+} 
+
+.container{
+    display: grid;
+    grid-gap: 25px;
+    background-color: #B0E0E6;
+    min-height: 100vh;
+    place-items: center;
+    }
+.component{
+    display: grid;
+    grid-gap: 25px;
+    place-items: center stretch;
+    place-items: center;
+}
+
+button {
+border: 1px solid black;
+background-color: orange;
+}
+
+.running-time {
+display: grid;
+grid-gap: 20px;
+}
+
+.red{
+    color: red;
+    padding: 0;
+    margin: 0;
+}
+.running-time h1, .running-time h3  {
+    padding: 0;
+    margin: 0;
+    font-size: 3rem;
+}
+
+img{
+width: auto;
+height: auto;
+padding-bottom: 25px;
+}
+
+input{
+background-color: MistyRose;
+/* border: 2px solid brown; */
+
+height: 25px;
+
+font-weight: 600;
+border: 2px solid #4682B4;
+}
+
+
