@@ -3,8 +3,6 @@ import TimeInput from './TimeInput'
 import StartButton from './StartButton'
 import RunningTime from './RunningTime'
 import ResetButton from './ResetButton'
-import StopButton from './StopButton'
-import IsBreak from "./IsBreak"
 import soundfile from './music.mp3'
 
 class Body extends React.Component {
@@ -15,19 +13,13 @@ class Body extends React.Component {
             value: '',
             isPlaying: false,
             resting: false,
-
-            // isBreak: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.startClock = this.startClock.bind(this);
         this.count = this.count.bind(this);
         this.reset = this.reset.bind(this);
-        //this.stop = this.stop.bind(this);
         this.play = this.play.bind(this);
         this.audio = new Audio(soundfile);
-
-        // this.setNewPomodoro = this.setNewPomodoro.bind(this)
-
     }
 
 
@@ -105,10 +97,6 @@ class Body extends React.Component {
             this.play();
 
             this.setState({
-                // isBreak: true,
-                // isBreak: !this.state.isBreak,
-                // working: false,
-                // resting: true,
                 isPlaying: !this.state.isPlaying,
                 value: '',
                 seconds: ''
@@ -146,13 +134,11 @@ class Body extends React.Component {
                         notice="Short Break! Set a time limit for resting:"
                         value={this.state.value} seconds={this.state.seconds}
                     />
-
                     <StartButton
                         startClock={this.startClock}
-                        buttonTitle="Set Break"
+                        buttonTitle={this.state.resting ? 'Set Break' : 'Start Pomodoro'}
                     />
                     <img src={require("./warhol.jpg")} />
-
                 </div>
             )
         }
@@ -161,10 +147,12 @@ class Body extends React.Component {
             return (
                 <div className="component">
                     <RunningTime min={this.state.value} sec={this.state.seconds} />
+
                     <ResetButton reset={this.reset} />
+
+
                     <img src={require("./warhol.jpg")} />
 
-                    {/* <StopButton stop={this.stop} /> */}
 
                 </div>
             );
@@ -175,30 +163,19 @@ class Body extends React.Component {
                 <div className="component">
                     <TimeInput handleChange={this.handleChange}
                         notice="Enter pomodoro time in minutes:"
-
-                        //reik nuimt
                         value={this.state.value} seconds={this.state.seconds}
                     />
-                    <StartButton startClock={this.startClock} buttonTitle="Start Pomodoro" />
+                    <StartButton
+                        startClock={this.startClock}
+                        buttonTitle={this.state.resting ? 'Set Break' : 'Start Pomodoro'}
+                    />
                     <img src={require("./warhol.jpg")} />
 
-
-                    {/* <button onClick={this.play}>Play</button> */}
                 </div>
             );
         }
     }
 }
-
-
-
-
-// stop() {
-//     this.setState({
-//         isClicked: false
-//     })
-// }
-
 
 
 export default Body

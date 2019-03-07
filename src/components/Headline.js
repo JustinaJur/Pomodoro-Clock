@@ -2,7 +2,6 @@ import React from 'react';
 import './Styles.css';
 
 
-
 const Headline = (props) => {
     return (
         <div className="headline component">

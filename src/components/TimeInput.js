@@ -9,11 +9,8 @@ class TimeInput extends React.Component {
                     type="number"
                     onChange={this.props.handleChange}
                     required
-
-
                     value={this.props.value}
                 />
-                {/* <h1>{this.props.value}:{this.props.seconds}</h1> */}
             </div>
         )
     }
