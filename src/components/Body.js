@@ -14,32 +14,23 @@ class Body extends React.Component {
             isPlaying: false,
             resting: false,
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.startClock = this.startClock.bind(this);
-        this.count = this.count.bind(this);
-        this.reset = this.reset.bind(this);
-        this.play = this.play.bind(this);
         this.audio = new Audio(soundfile);
     }
 
 
-    play() {
+    play = () => {
         this.audio.play();
     }
 
     //get inserted value in minutes
-    handleChange(event) {
+    handleChange = event => {
         // event.preventDefault();
-        console.log(event.target.value)
         this.setState({
             value: event.target.value,
-            // seconds: '00',
         })
-
-
     }
 
-    startClock() {
+    startClock = () => {
         if (this.state.value <= 0) {
             alert("please enter a positive number");
             this.setState({
@@ -49,15 +40,12 @@ class Body extends React.Component {
             return false;
         }
         else {
-
             this.count();
-
             this.setState({
                 isPlaying: true,
                 value: '00',
                 seconds: '00',
                 resting: !this.state.resting,
-
             })
             this.manageInterval = setInterval(this.count, 1000);
             let time = this.state.value;
@@ -67,20 +55,15 @@ class Body extends React.Component {
     }
 
 
-    count() {
-
+    count = () => {
         //shows minutes (largest full integer without seconds)
         let min = Math.floor(this.inputInSeconds / 60);
         //shows inserted seconds (without minutes)
-        console.log(min);
         let sec = Math.floor(this.inputInSeconds - (min * 60));
-
         this.setState({
             value: min,
             seconds: sec,
         })
-
-        //to show smth like 06 instaed of 6
 
         if (sec < 10) {
             this.setState({
@@ -95,7 +78,6 @@ class Body extends React.Component {
         if (min === 0 & sec === 0) {
             clearInterval(this.manageInterval);
             this.play();
-
             this.setState({
                 isPlaying: !this.state.isPlaying,
                 value: '',
@@ -105,24 +87,20 @@ class Body extends React.Component {
         this.inputInSeconds--
     }
 
-
-    reset() {
+    reset = () => {
         clearInterval(this.manageInterval);
         this.setState({
             isPlaying: false,
             resting: false,
             value: '',
             seconds: ''
-
         })
     }
 
 
-
-
     render() {
         const isPlaying = this.state.isPlaying;
-        const isBreak = this.state.isBreak;
+        //const isBreak = this.state.isBreak;
         const resting = this.state.resting;
 
 
@@ -147,10 +125,7 @@ class Body extends React.Component {
             return (
                 <div className="component">
                     <RunningTime min={this.state.value} sec={this.state.seconds} />
-
                     <ResetButton reset={this.reset} />
-
-
                     <img src={require("./warhol.jpg")} />
 
 
@@ -170,7 +145,6 @@ class Body extends React.Component {
                         buttonTitle={this.state.resting ? 'Set Break' : 'Start Pomodoro'}
                     />
                     <img src={require("./warhol.jpg")} />
-
                 </div>
             );
         }

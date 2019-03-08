@@ -11,5 +11,4 @@ class RunningTime extends React.Component {
     }
 }
 
-
 export default RunningTime

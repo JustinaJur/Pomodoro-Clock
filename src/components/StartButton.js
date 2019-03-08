@@ -8,10 +8,8 @@ class StartButton extends React.Component {
 
                     {this.props.buttonTitle}</button>
             </div>
-
         )
     }
-
 }
 
 
